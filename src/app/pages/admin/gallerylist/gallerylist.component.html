@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+      <li class="breadcrumb-item">
+        <a routerLink="/admin/builderlist">Builder list</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/admin/projectlist', BuildId, BuildName]"
+          >Project list</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">List Gallery</li>
+    </ol>
+    <span id ="logout">Welcome Admin || <a routerLink="/admin/login">Logout </a> </span>
+  </nav>
+  <div class="row">
+    <!-- <div class="col-md-2">
+      <app-adminsidebar></app-adminsidebar>
+    </div> -->
+    <div class="col-md-12">
+      <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
+        <h3>List Gallery for {{ ProjName }}</h3>
+        <form [formGroup]="uploadForm">
+          <label class="btn btn-info custom-file-upload">
+            <input
+              formControlName="gimage"
+              type="file"
+              name="gimage[]"
+              (change)="onFileSelect($event)"
+              multiple/>
+            Add Gallery
+          </label>
+          <div>
+            <!-- <input formControlName="gimage" type="file" name="gimage[]" (change)="onFileSelect($event)" multiple/> -->
+          </div>
+          <!-- <div>
+          <button type="submit">Upload</button>
+        </div> -->
+        </form>
+      </div>
+
+      <div class="col-md-12 py-6 px-0">
+          <div class="container d-flex align-items-center justify-content-center" *ngIf="removeLoad else remoLoad">
+          <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+        </div>
+          <ng-template #remoLoad>
+        <ul id="navlist" class="m-0 p-0 d-flex flex-wrap">
+          <li *ngFor="let Gallery of galarylist" class="img_wrp">
+            <div class="card mb-4">
+              <div class="card-body">
+                <img
+                  class="thumbnail"
+                  src="http://www.zaararealty.in/{{ Gallery.img_path }}/{{
+                    Gallery.img_name
+                  }}"
+                />
+                <!-- fa-heart -->
+  <span class="fav" *ngIf="Gallery.status == '1'" (click)="main_img(Gallery.ID)"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+  <span class="fav" *ngIf="Gallery.status == '0'" (click)="main_img(Gallery.ID)"><i class="fa fa-heart" aria-hidden="true"></i></span>
+
+              </div>
+            </div>
+            <button type="button" (click)="remove(Gallery.ID)" class="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <!-- <img
+              class="close_icon"
+              (click)="remove(Gallery.ID)"
+              src="assets/icons/delete-bin.png"
+            /> -->
+          </li>
+        </ul>
+      </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

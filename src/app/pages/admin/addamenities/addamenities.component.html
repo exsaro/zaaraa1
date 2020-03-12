@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+        <li class="breadcrumb-item"><a routerLink="/admin/builderlist">Builder list</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin/projectlist', BuildId, BuildName]">Project list</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin/amenitieslist', ProjId, ProjName]">Amenities list</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add amenities</li>
+    </ol>
+    <span id ="logout">Welcome Admin || <a routerLink="/admin/login">Logout </a> </span>
+  </nav>
+  <div class="row">
+
+    <!-- <div class="col-md-2">
+      <app-adminsidebar></app-adminsidebar>
+    </div> -->
+    <div class="col-md-12">
+      <div class="d-flex align-items-center justify-content-between w-100 border-bottom mb-4">
+        <h3 class="pb-3">Add amenities for {{ProjName}}</h3>
+        <!-- <a [routerLink]="['/admin/amenitieslist',ProjId]">Amenities list</a> -->
+      </div>
+
+      <form [formGroup]="addAmenitiesForm" (ngSubmit)="addAmenities()">
+
+      <div class="card mb-4 p-3">
+          <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="amenname">Amenities name</label>
+                    <input type="text" formControlName="amenities_name" class="form-control" name="amenname"
+                      placeholder="Amenities name">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="status">Status</label>
+                    <select formControlName="status" class="form-control" name="status" #status>
+                      <option value="Active" [selected]=true>Active</option>
+                      <option value="InActive">InActive</option>
+                    </select>
+
+                  </div>
+                </div>
+          </div>
+      </div>
+      <p class="text-right"><button type="submit" class="btn btn-primary" [disabled]="!addAmenitiesForm.valid">Submit</button></p>
+      </form>
+
+    </div>
+  </div>
+</div>

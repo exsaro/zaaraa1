@@ -1,0 +1,14 @@
+.table a{
+  text-transform: uppercase;
+  margin-right: 15px;
+}
+.table a:last-child{
+  margin-right: 0;
+}
+.form-control{
+  font-size: 14px;
+  height: calc(2.25rem + 0px);
+}
+textarea.form-control{
+  height: 150px;
+}

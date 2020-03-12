@@ -1,0 +1,148 @@
+<div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+        <li class="breadcrumb-item"><a routerLink="/admin/builderlist">Builder list</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin/projectlist', buildId, buildName]">Project list</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Project</li>
+    </ol>
+    <span id ="logout">Welcome Admin || <a routerLink="/admin/login">Logout </a> </span>
+  </nav>
+  <div class="row">
+    <!-- <div class="col-md-2">
+      <app-adminsidebar></app-adminsidebar>
+    </div> -->
+    <div class="col-md-12">
+
+        <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+
+        <div class="d-flex align-items-center justify-content-between w-100 border-bottom mb-4">
+          <h3 class="pb-3">Add Project for {{buildName}}</h3>
+          <!-- <a [routerLink]="['/admin/projectlist',buildId]">Project list</a> -->
+        </div>
+
+      <form [formGroup]="addProjectForm" (ngSubmit)="addProject()">
+        <div class="card mb-4 p-3">
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="projname">Project name</label>
+                <input type="text" formControlName="Project_name" class="form-control" name="projname"
+                  placeholder="Project name">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                  <label for="projname">Possession date</label>
+                <input type="text" formControlName="Possession_Date" class="form-control" name="possdate"
+                  placeholder="Possession date">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="launchdate">Launch date</label>
+                <input type="text" formControlName="Launch_Date" class="form-control" name="launchdate"
+                  placeholder="Launch date">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="projloc">Project location</label>
+                <input type="text" formControlName="Project_location" class="form-control" name="projloc"
+                  placeholder="Project location">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="area">Area</label>
+                <input type="text" formControlName="area" class="form-control" name="area"
+                  placeholder="Area">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="langlat">Longitude and Latitude</label>
+                <input type="text" formControlName="lang_lat" class="form-control" name="langlat"
+                  placeholder="Longitude and Latitude">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="bhk">BHK</label>
+                <input type="text" formControlName="BHK" class="form-control" name="bhk"
+                  placeholder="BHK">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="minbuild">Min build area</label>
+                <input type="text" formControlName="minbuilduparea" class="form-control" name="minbuild"
+                  placeholder="Min build area">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="minbuild">Max build area</label>
+                <input type="text" formControlName="maxbuilduparea" class="form-control" name="maxbuild"
+                  placeholder="Max build area">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="minpprice">Min Price</label>
+                <input type="text" formControlName="minprice" class="form-control" name="minpprice"
+                  placeholder="Min Price">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="totunit">Total units</label>
+                <input type="text" formControlName="total_units" class="form-control" name="totunit"
+                  placeholder="Total units">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="totarea">Total area</label>
+                <input type="text" formControlName="total_area" class="form-control" name="totarea"
+                  placeholder="Total area">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="avail">Availability</label>
+                <input type="text" formControlName="availability" class="form-control" name="avail"
+                  placeholder="Availability">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="approv">Approvals</label>
+                <input type="text" formControlName="Approvals" class="form-control" name="approv"
+                  placeholder="Approvals">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select formControlName="status" class="form-control" name="status" #status>
+                  <option value="Active" [selected]=true>Active</option>
+                  <option value="InActive">InActive</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Project description</label>
+                <textarea name="" id="" cols="30" rows="5" class="form-control" formControlName="project_desc"></textarea>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <p class="text-right"><button type="submit" class="btn btn-primary" [disabled]="!addProjectForm.valid">Submit</button></p>
+      </form>
+    </div>
+  </div>
+</div>

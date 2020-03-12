@@ -1,0 +1,388 @@
+
+    <!-- <div id="loadermodal" class="modal fade">
+
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-body" style="padding:0!important">
+        <div class="offer-modal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="#000"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/></svg>	</button>
+        </div>
+<div><img src="assets/images/Mailer-3.jpg" alt="offer" class="img-fluid" /></div>
+<div class="col-12 pt-3 enquiry">
+  <div class="container">
+    <div class="text-center">
+        <h5 class="mb-4">Enquiry</h5>
+              </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-12">
+            <form  [formGroup]="leadForm" (submit)="leads(leadForm)">
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Name"
+                    formControlName="Last_Name"
+                    required="required"
+                  />
+                </div>
+
+
+                <div class="form-group col-md-4">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter email"
+                    formControlName="Email"
+                    required
+                  />
+                </div>
+                <div class="form-group col-md-4">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="Mobile No."
+                    formControlName="Mobile"
+                    required
+                  />
+                </div>
+                <div class="form-group col-md-8"><re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)" siteKey="6Lfki38UAAAAADienDrSAirDZ7LdEWmU3SnDtTdc
+                  "></re-captcha></div>
+                  <div class="form-group col-md-4 text-right">
+                    <button type="submit" class="btn btn-primary" [disabled]="!leadForm.valid">
+                  <span *ngIf="!progressFlag">Get Call Back</span>
+                  <span *ngIf="!!progressFlag" class="loader-submit"></span>
+                </button>
+                </div>
+            </div>
+              </form>
+              <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+            </div>
+
+
+        </div>
+
+</div>
+</div>
+
+</div> </div>
+
+
+</div>
+</div> -->
+
+<section class="hero-container carousel slide" id="hero" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#hero" data-slide-to="0" class="active"></li>
+        <li data-target="#hero" data-slide-to="1"></li>
+        <li data-target="#hero" data-slide-to="2"></li>
+        <li data-target="#hero" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="hero-section d-flex justify-content-center">
+            <img class="img-fluid" src="assets/images/hero-banner/banner1.jpg" alt="">
+            <div class="container hero-caption">
+                <!-- <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
+                <button class="btn btn-primary no-radius">Read more</button> -->
+                <a href="#" (click)="getRef('Citrus Country')" data-target="#enquiryModl" class="btn btn-primary no-radius" data-toggle="modal">Enquiry Now</a>
+            </div>
+            </div>
+        </div>
+        <div class="carousel-item bnr2">
+            <div class="hero-section d-flex justify-content-center">
+            <img class="img-fluid" src="assets/images/hero-banner/banner2.jpg" alt="">
+            <div class="container hero-caption">
+                <!-- <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
+                <button class="btn btn-primary no-radius">Read more</button> -->
+                <a href="#" (click)="getRef('Crystal gate')" data-target="#enquiryModl" class="btn btn-primary no-radius" data-toggle="modal">Enquiry Now</a>
+            </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="hero-section d-flex justify-content-center">
+            <img class="img-fluid" src="assets/images/hero-banner/banner3.jpg" alt="">
+            <div class="container hero-caption">
+                <!-- <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
+                <button class="btn btn-primary no-radius">Read more</button> -->
+                <a href="#" (click)="getRef('Sri Sai Elite')" data-target="#enquiryModl" class="btn btn-primary no-radius" data-toggle="modal">Enquiry Now</a>
+            </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-section d-flex justify-content-center">
+          <img class="img-fluid" src="assets/images/hero-banner/banner4.jpg" alt="">
+          <div class="container hero-caption">
+              <!-- <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
+              <button class="btn btn-primary no-radius">Read more</button> -->
+              <a href="#" (click)="getRef('Altamira')" data-target="#enquiryModl" class="btn btn-primary no-radius" data-toggle="modal">Enquiry Now</a>
+          </div>
+          </div>
+      </div>
+    </div>
+
+</section>
+
+<section class="mb-5 search-container">
+  <div class="container">
+    <div class="search-section d-flex">
+        <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (keyup)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2" placeholder="Enter your Preferred Location">
+        <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!mainSearch.value">Submit</button>
+        <!-- <button class="btn btn-primary" (click)="navigateToProjectDetails()">Submit</button> -->
+    </div>
+
+  <div class="auto-suggest" *ngIf="!showSuggest">
+    <!-- <div *ngIf="loading">Loading...</div> -->
+    <ul>
+      <div>
+        <li><span>{{searchAllResults.Location.type}}</span></li>
+        <li *ngFor="let suggestLocation of searchAllResults.Location.response">
+          <a href="#" (click)="getData($event,suggestLocation)">{{suggestLocation}}</a>
+        </li>
+      </div>
+      <div>
+          <li><span>{{searchAllResults.Projects.type}}</span></li>
+          <li *ngFor="let suggestProjects of searchAllResults.Projects.response">
+            <a href="#" (click)="getData($event,suggestProjects)">{{suggestProjects}}</a>
+          </li>
+      </div>
+    </ul>
+
+    </div>
+
+    <!-- <div class="latest-search mt-3">
+        <ul>
+            <li *ngFor="let quickSerch of quickSearchs"><a (click)="showProjects($event,quickSerch)" href="#">{{quickSerch}}</a></li>
+        </ul>
+    </div> -->
+</div>
+</section>
+
+<section class="welcome-contaoner pb-5 parallax position-relative" id="about">
+    <div class="container-fluid">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-6 welcome-img-section px-0">
+            <img class="img-fluid" src="assets/images/welcome-img.jpg" alt="">
+        </div>
+        <div class="col-md-6 welcome-section">
+            <h2 class="mb-4">Welcome to <span class="d-block">Zaara Realty</span></h2>
+            <p>Zaara Realty provides all the stake holders with end to end services to ensure a seamless marketing and sales experience. Services include Marketing and sales support for developers, provide wide range of exclusive properties comprising of ready-to-move-in homes, affordable homes, premium homes and plots to investors & property-buyers.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="about-container parallax py-5 mb-5 position-relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 excellence">
+                <h3>Excellence</h3>
+                <p>Driven, motivated and inspired everyone at Zaara Realty strives for brilliance at work. This helps our clients get top notch services.</p>
+            </div>
+            <div class="col-md-4 passion">
+                <h3>Passion</h3>
+                <p>Handpicked by our team of experts, each member of our team is driven by a passion and a commitment towards best practices.</p>
+            </div>
+            <div class="col-md-4 intelligence">
+                <h3>Intelligence</h3>
+                <p>With our experience of scoping opportunities around the globe and our acumen for real estate we help our client make intelligent investments.</p>
+            </div>
+        </div>
+        <!-- <div class="text-center"><button class="btn btn-primary no-radius">Read More</button></div>  -->
+    </div>
+</section>
+
+
+<!--<app-project-summary [searchRes]="searchResults"></app-project-summary>-->
+<app-project-summary [searchRequestParams]="searchRequestParams"></app-project-summary>
+
+
+
+
+<section class="py-5 clients-container">
+
+    <div class="container text-center">
+        <h3 class="mb-4">Clients</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="owl-carousel mb-0">
+                    <!-- <li *ngFor="let client of clients"><img class="img-fluid" [src]="'https://www.zaararealty.in'+client.logo" alt=""></li> -->
+                    <li><img class="img-fluid" src="assets/images/clients/ozonegreen_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/shriram_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/thelokhaubud_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/urbantree_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/isha_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/navins_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/radiance_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/ShriJanani_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/vijaybuilders_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/agni_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/alliance_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/puravankara_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/urbanrise_logo.jpg" alt=""></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="whychoose-container py-5 parallax">
+    <div class="container text-center">
+        <h3>Why choose us?</h3>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <p class="whychoose-number">01</p>
+                <p class="mb-0">DEDICATED PROPERTY CONSULTANT</p>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <p class="whychoose-number">02</p>
+                <p class="mb-0">24x7 SUPPORT</p>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <p class="whychoose-number">03</p>
+                <p class="mb-0">WE DO IT ALL</p>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <p class="whychoose-number">04</p>
+                <p class="mb-0">BEST DEAL</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-5 enquiry" id="contact">
+    <div class="container">
+        <div class="text-center">
+            <h3 class="mb-4">Enquiry</h3>
+            <p class="mb-4">Connect with our property Consultant!</p>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-10">
+                <form  [formGroup]="leadForm" (submit)="leads(leadForm)">
+                    <div class="form-row mb-5">
+                    <div class="form-group col-md-4">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Name"
+                        formControlName="Last_Name"
+                        required="required"
+                      />
+                    </div>
+
+
+                    <div class="form-group col-md-4">
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Enter email"
+                        formControlName="Email"
+                        required
+                      />
+                    </div>
+                    <div class="form-group col-md-4">
+                      <input
+                        type="tel"
+                        class="form-control"
+                        placeholder="Mobile No."
+                        formControlName="Mobile"
+                        required
+                      />
+                    </div>
+                    <input type="hidden" [value]="referSite" #refersite />
+                  <div class="form-group col-md-4">
+                    <textarea class="form-control" placeholder="Enq. Message" formControlName="Message" required></textarea>
+                  </div>
+                    <div class="form-group"><re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)" siteKey="6Lfki38UAAAAADienDrSAirDZ7LdEWmU3SnDtTdc
+                      "></re-captcha></div>
+                      <div class="form-group col-md-4 text-right">
+                        <button type="submit" class="btn btn-primary" [disabled]="!leadForm.valid">
+                      <span *ngIf="!progressFlag">Get Call Back</span>
+                      <span *ngIf="!!progressFlag" class="loader-submit"></span>
+                    </button>
+                    </div>
+                </div>
+                  </form>
+                  <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+                </div>
+
+
+                <div class="address text-center">
+                    <p><span>Call us: </span>+91 7067 7067 22</p>
+                    <p><span>Email us: </span><a href="mailto:lakshmi@zaararealty.in">lakshmi@zaararealty.in</a></p>
+                    <p class="pb-4"><span>Address:</span> F1, No: 78, Gulmohar Avenue, Velachery main road, Guindy, Chennai - 600 032.</p>
+                </div>
+            </div>
+
+    </div>
+</section>
+
+<div class="modal fade" id="enquiryModl" tabindex="-1" role="dialog" aria-labelledby="enquiryModlLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enquiry for {{referSite}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form  [formGroup]="leadForm" (submit)="leads(leadForm)">
+      <div class="modal-body">
+        <div class="col-md-12">
+
+              <div class="form-row">
+              <div class="form-group col-md-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Name"
+                  formControlName="Last_Name"
+                  required="required"
+                />
+              </div>
+
+
+              <div class="form-group col-md-12">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter email"
+                  formControlName="Email"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-12">
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="Mobile No."
+                  formControlName="Mobile"
+                  required
+                />
+              </div>
+              <input type="hidden" [value]="referSite" #refersite />
+              <div class="form-group col-md-12">
+                <textarea class="form-control" placeholder="Enq. Message" formControlName="Message" required></textarea>
+              </div>
+              <div class="form-group col-md-12"><re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)" siteKey="6Lfki38UAAAAADienDrSAirDZ7LdEWmU3SnDtTdc
+                "></re-captcha></div>
+
+          </div>
+
+            <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="!leadForm.valid">
+          <span *ngIf="!progressFlag">Get Call Back</span>
+          <span *ngIf="!!progressFlag" class="loader-submit"></span>
+        </button>
+      </div>
+    </form>
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.form-control{
+  border: solid 1px #ced4da;
+  height: 47px!important;
+  font-size: 16px!important;
+  font-weight: bold;
+}
+#logout { cursor:pointer; padding:10px 20px 10px 0; text-align:left; text-indent:40px; /*display:block; */ margin:0 auto; display: inline-block; /* add This Code */ position: absolute; right:10px; top: 50px;
+}

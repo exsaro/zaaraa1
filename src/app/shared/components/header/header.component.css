@@ -1,0 +1,62 @@
+
+header .nav a{
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #000;
+  font-weight: bold;
+}
+header .nav li{
+  margin-right: 25px;
+}
+header h1{
+  margin: 10px 0;
+  position: relative;
+  padding-right: 45px;
+}
+header h1:after{
+  position: absolute;
+  right: 25px;
+  content: "";
+  width: 1px;
+  height: 100%;
+  background: #cfa854;
+}
+@media only screen and (max-width: 767px) {
+  .hamburger,.project-container .media,.closBtn{
+    display: block;
+}
+.nav{
+    position: fixed;
+    right: -220px;
+    display: block;
+    background: rgba(0,0,0,0.9);
+    z-index: 999;
+    height: 100%;
+    top: 0;
+    width: 220px;
+    padding: 20px;
+}
+header .nav a{
+    color: #fff;
+    font-size: 22px;
+}
+header .nav li{
+    margin-right: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+}
+#mail-btn {
+  position: fixed;
+  top: 25px;
+  right: 20px;
+  z-index: 999;
+  font-size: 18px;
+  border: none;
+  outline: 0;
+  color: #fff;
+}
+.enquire-btn{padding:.7rem 1.5rem .7rem!important;
+  background:#cea654;border-radius:25px;font-size:16px;
+  color:#fff!important;top:100px; right:60px;}
+.enquire-btn a,.enquire-btn a:hover,a:hover.enquire-btn{text-decoration:none;}

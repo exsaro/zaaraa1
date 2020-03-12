@@ -1,0 +1,222 @@
+<div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+        <li class="breadcrumb-item"><a routerLink="/admin/builderlist">Builder list</a></li>
+      <li class="breadcrumb-item active" aria-current="page">List Project</li>
+    </ol>
+    <span id ="logout">Welcome Admin || <a routerLink="/admin/login">Logout </a> </span>
+  </nav>
+  <div class="row">
+    <!-- <div class="col-md-2">
+      <app-adminsidebar></app-adminsidebar>
+    </div> -->
+    <div class="col-md-12">
+      <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
+        <h3>List of Projects for {{BuildName}}</h3>
+        <a href="#" (click)="addProject(BuildId, BuildName, $event)" class="btn btn-info">Add Project</a>
+      </div>
+      <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+
+      <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else load">
+        <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+      </div>
+
+      <ng-template #load>
+      <table class="table table-hover" *ngIf="listProjects.length > 0; else noProjects">
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Area</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let projList of listProjects; let i = index">
+          <td>{{projList.Project_name}}</td>
+          <td>{{projList.Project_location}}</td>
+          <td>{{projList.area}}</td>
+          <td>{{projList.status}}</td>
+          <td>
+            <a class="badge badge-secondary" href="#editProjModal" data-toggle="modal" (click)="editProject(projList.ID)">Edit</a>
+            <a class="badge badge-danger" href="#deleteProjModal" data-toggle="modal" (click)="deleteProject(projList.ID)">Delete</a>
+            <a class="badge badge-primary" [routerLink]="['/admin/amenitieslist', projList.ID, projList.Project_name]">Amenities</a>
+            <a class="badge badge-primary" [routerLink]="['/admin/pricinglist', projList.ID, projList.Project_name]">Price</a>
+            <a class="badge badge-primary" [routerLink]="['/admin/gallerylist', projList.ID, projList.Project_name]">Gallery</a>
+          </td>
+        </tr>
+      </table>
+
+
+
+      <ng-template #noProjects>No Data Found</ng-template>
+    </ng-template>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteProjModal" tabindex="-1" role="dialog" aria-labelledby="deleteProjModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteProjModalLabel">Delete Project</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure, want to delete this Project?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal" (click)="deleteProjectConfirm()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="modal fade" id="editProjModal" tabindex="-1" role="dialog" aria-labelledby="editProjModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="container d-flex align-items-center justify-content-center" *ngIf="editLoading else editLoad">
+            <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+          </div>
+          <ng-template #editLoad>
+          <div class="modal-header">
+            <h5 class="modal-title" id="editProjModalLabel">Edit Project</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="editProjectForm" (submit)="editProjectConfirm()">
+          <div class="modal-body">
+            <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else editLoad">
+              <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+            </div>
+            <ng-template #editLoad>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" formControlName="Project_name" class="form-control" name="projname"
+                    placeholder="Project name">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="Possession_Date" class="form-control" name="possdate"
+                    placeholder="Possession date">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="Launch_Date" class="form-control" name="launchdate"
+                    placeholder="Launch date">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="Project_location" class="form-control" name="projloc"
+                    placeholder="Project location">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="area" class="form-control" name="area"
+                    placeholder="Area">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="lang_lat" class="form-control" name="langlat"
+                    placeholder="Longitude and Latitude">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="BHK" class="form-control" name="bhk"
+                    placeholder="BHK">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="minbuilduparea" class="form-control" name="minbuild"
+                    placeholder="Min build area">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="maxbuilduparea" class="form-control" name="maxbuild"
+                    placeholder="Max build area">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="minprice" class="form-control" name="minpprice"
+                    placeholder="Min Price">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="total_units" class="form-control" name="totunit"
+                    placeholder="Total units">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="total_area" class="form-control" name="totarea"
+                    placeholder="Total area">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="availability" class="form-control" name="avail"
+                    placeholder="Availability">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <input type="text" formControlName="Approvals" class="form-control" name="approv"
+                    placeholder="Approvals">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <select formControlName="status" class="form-control" name="status" #status>
+                    <option value="Active">Active</option>
+                    <option value="InActive">InActive</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <textarea name="" id="" cols="30" rows="5" class="form-control" formControlName="project_desc"></textarea>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-info"
+            [disabled]="!editProjectForm.valid" >Save changes</button>
+          </div>
+          </form>
+        </ng-template>
+        </div>
+      </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+      <li class="breadcrumb-item"><a routerLink="/admin/builderlist">List Builder</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Builder</li>
+    </ol>
+    <span id ="logout">Welcome Admin || <a routerLink="/admin/login">Logout </a> </span>
+  </nav>
+  <div class="row">
+    <!-- <div class="col-md-2">
+      <app-adminsidebar></app-adminsidebar>
+    </div> -->
+
+    <div class="col-md-12">
+      <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+      <h3 class="border-bottom pb-3 mb-4">Add Builder</h3>
+      <form [formGroup]="addBuilderForm" (ngSubmit)="addBuilder()">
+        <div class="card mb-4 p-3">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="buildname">Builder name</label>
+                <input type="text" formControlName="builders_name" class="form-control" name="buildname"
+                  placeholder="Builder name">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="buildloc">Builder location</label>
+                <input type="text" formControlName="builders_location" class="form-control" name="buildloc"
+                  placeholder="Builder location" #builders_location>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="buildarea">Builder area</label>
+                <input type="text" formControlName="builders_area" class="form-control" name="buildarea"
+                  placeholder="Builder area" #builders_area>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="totproj">Total project</label>
+                <input type="number" min="1" formControlName="totalprojects" class="form-control" name="totproj"
+                  placeholder="Total project" #totalprojects>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="ongoing">Ongoing</label>
+                <input type="number" min="1" formControlName="ongoing" class="form-control" name="ongoing"
+                  placeholder="Ongoing" #ongoing>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select formControlName="status" class="form-control" name="status" #status>
+                  <option value="Active" [selected]=true>Active</option>
+                  <option value="InActive">InActive</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="logo">Logo</label>
+                <input type="file" class="form-control" formControlName="builders_logo" name="logo" placeholder="Logo"
+                  (change)="onFileSelect($event)" #builders_logo>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="buildspec">Builder specification</label>
+                <textarea formControlName="builders_spec" class="form-control" name="buildspec" cols="30" rows="5"
+                  #builders_spec></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-right"><button type="submit" class="btn btn-primary"
+            [disabled]="!addBuilderForm.valid" #submitBtn>Submit</button></p>
+      </form>
+    </div>
+  </div>
+</div>

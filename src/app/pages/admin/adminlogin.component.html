@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-4 mt-5">
+      <h2 class="text-center">Admin Login</h2>
+      <div  class="alert alert-danger" *ngIf="!!validateFlag">{{validateMsg}}</div>
+      <form [formGroup]="adminForm" (submit)="adminLogin(adminForm)">
+        <div class="card p-3">
+          <div class="form-group">
+            <label for="adminLogin">Email address</label>
+            <input type="TEXT" formControlName="adminLogin" class="form-control" id="adminLogin" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="adminPass">Password</label>
+            <input type="password" formControlName="adminPass" class="form-control" id="adminPass" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!adminForm.valid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

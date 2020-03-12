@@ -1,0 +1,268 @@
+<section class="fullview-container">
+  <div class="banner-fullview" [ngStyle]="{ 'background-image': projectDetails?.main_img != '' ? 'url(https://www.zaararealty.in'+projectDetails?.main_img+')' : 'url(assets/images/proj-fullview-sample.jpg)' }">
+
+    <div class="container" *ngIf="projectDetails?.Approvals != null">
+      <div class="rera-section p-2">
+        <ul>
+          <li>
+            <span>PROJECT RERA ID :</span>
+            {{projectDetails?.Approvals}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="container">
+  <section class="maindetail-container p-4 mb-5">
+
+    <div class="d-lg-flex align-items-center justify-content-center" *ngIf="loading else load"><img class="mt-4" src="assets/images/loader-summery.gif" alt=""></div>
+    <ng-template #load>
+    <div class="d-lg-flex align-items-center">
+      <div class="price-section mb-4 mb-lg-0">
+        <span>Builder price</span>
+        <strong class="price">On request</strong>
+      </div>
+      <div class="desc-section mx-lg-5">
+        <p class="title mb-0">
+          {{projectDetails?.Project_name}}, {{projectDetails?.Project_location}}, {{projectDetails?.area}}
+        </p>
+        <ul class="d-flex sqft mb-3">
+          <li>
+            <i>
+              <img
+                src="./assets/images/svg/area.svg"
+                width="16"
+                alt=""
+              />
+            </i>
+            <span class="mx-1">SQFT</span>{{projectDetails?.minbuilduparea}} - {{projectDetails?.maxbuilduparea}}
+          </li>
+          <!--<li>
+            <i
+              ><img
+                src="../../../assets/images/svg/bathroom.svg"
+                alt=""
+                width="16"/></i
+            ><span class="mx-1">BATHS</span>2
+          </li>-->
+          <li>
+            <i
+              ><img
+                src="./assets/images/svg/bedroom.svg"
+                width="16"
+                alt=""/></i
+            ><span class="mx-1">{{projectDetails?.BHK}} </span>
+          </li>
+        </ul>
+        <p class="desc">
+          {{projectDetails?.project_desc}}
+        </p>
+      </div>
+      <div class="other-section">
+        <ul class="d-flex flex-wrap">
+          <li class="w-50"><span>Total Units</span> {{projectDetails?.total_units}}</li>
+          <li class="w-50"><span>Status</span> {{projectDetails?.status |  titlecase}}</li>
+         <li class="w-50" *ngIf="projectDetails.total_area"><span>Total Area</span> {{projectDetails.total_area}}</li>
+         <li class="w-50"><span>Possession Date</span> {{projectDetails.Possession_Date}}</li>
+        </ul>
+      </div>
+    </div>
+    </ng-template>
+
+  </section>
+  <section class="secondarydetail-container mb-5">
+    <div class="row">
+      <div class="col-md-12 mb-4 mb-xl-0 col-xl-8">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+              Amenities
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+              Price details
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+              Gallery
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content p-4 mb-5" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div *ngIf="projectDetails?.amenities.length > 0; else noItem">
+              <ul class="amndits">
+                <li *ngFor="let item of projectDetails?.amenities">
+                  {{item}}
+                </li>
+              </ul>
+          </div>
+          <ng-template #noItem>No Details available</ng-template>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div *ngIf="projectDetails?.pricing.length > 0; else noItem">
+              <table class="table">
+                <tr>
+                  <th>BHK</th>
+                  <th>Sq. Ft</th>
+                  <th>Price</th>
+                </tr>
+                <tr *ngFor="let price of projectDetails?.pricing">
+                  <td>{{price.type}}</td>
+                  <td>{{price.area_size}}</td>
+                  <td>On request</td>
+                </tr>
+              </table>
+            </div>
+            <ng-template #noItem>No Details available</ng-template>
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              <div *ngIf="projectDetails?.gallery.length > 0; else noItem">
+            <ul class="clearfix galry">
+              <li *ngFor="let gallery of projectDetails?.gallery; let i = index">
+                <a data-toggle="modal" href="#galleryModel">
+                  <img (click)="showPop(i)" [src]="'https://www.zaararealty.in'+gallery" class="img-fluid" alt="">
+                </a>
+              </li>
+            </ul>
+
+            </div>
+            <ng-template #noItem>No Details available</ng-template>
+          </div>
+        </div>
+
+        <div *ngIf="projectDetails?.builders_spec !== ''">
+          <h3>About {{projectDetails?.builders_name | titlecase}}</h3>
+          <p class="bulder-desc">{{projectDetails?.builders_spec}}</p>
+        </div>
+
+
+      </div>
+      <div class="col-md-12 col-xl-4">
+        <div class="card enqFrm">
+          <div class="card-header">
+            Interested to buy property in
+            <strong>{{projectDetails?.builders_name}}?</strong>
+          </div>
+          <div class="card-body pb-2">
+            <form class="mb-4" [formGroup]="leadForm" (submit)="leads(leadForm)">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Name"
+                  formControlName="Last_Name"
+                  required="required"
+                />
+              </div>
+
+
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter email"
+                  formControlName="Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="Mobile No."
+                  formControlName="Mobile"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" required formControlName="Message" placeholder="Enquiry message"></textarea>
+              </div>
+              <!-- <div class="form-group"><re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)" siteKey="6Lf2yacUAAAAAH3PNu4YOwtQdRZFUWVfLoUp-yVR
+                "></re-captcha></div> -->
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="!leadForm.valid">
+                <span *ngIf="!progressFlag">Get Call Back</span>
+                <span *ngIf="!!progressFlag" class="loader-submit"></span>
+              </button>
+            </form>
+            <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+            <div class="d-flex assured mb-2">
+              <span class="mr-3"
+                ><img src="./assets/images/assured.jpg" alt=""
+              /></span>
+
+              <span>
+                <strong>Assured callback in 5 mins</strong>
+                <span
+                  >Get an assured callback in 5 mins from sales expert (9AM -
+                  6PM IST)</span
+                >
+              </span>
+            </div>
+            <div class="d-flex assured mb-2">
+              <span class="mr-3"
+                ><img src="./assets/images/authorised.jpg" alt=""
+              /></span>
+              <span>
+                <strong>Authorised Channel Partner</strong>
+                <span
+                  >Zaaraa Realty is an authorised channel partner for this
+                  project</span
+                >
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="detaillocation-container">
+
+    <!-- <agm-map [latitude]="lat" [longitude]="lang">
+      <agm-marker [latitude]="lat" [longitude]="lang"></agm-marker>
+    </agm-map> -->
+
+    <!-- [src]="'https://www.zaararealty.in'+gallery" -->
+
+
+    <iframe width="100%" height="450" frameborder="0" style="border:0" [src]="'https://www.google.com/maps/embed/v1/place?q='+lat+','+lang+'&amp;key=AIzaSyBlVqyB--wrkGpks1i74mHuZLpGu1pwVq8' | safe"></iframe>
+
+</section>
+<!-- data-backdrop="static" -->
+<div class="modal fade" data-backdrop="static" id="galleryModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div id="gallerycarousel" class="carousel slide" data-ride="carousel">
+
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+
+
+          <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="carousel-inner">
+              <div class="carousel-item" *ngFor="let gallery of projectDetails?.gallery; let i = index" [ngClass]="selectedImg === i ? 'active' : ''" >
+                <img [src]="'https://www.zaararealty.in'+gallery" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+
+          <a class="carousel-control-prev" href="#gallerycarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#gallerycarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+
+
+
+  </div>
+</div>

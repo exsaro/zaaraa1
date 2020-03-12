@@ -1,0 +1,48 @@
+<section class="project-container mb-5 position-relative" id="projects">
+  <div class="container">
+    <h3 class="text-center mb-4 mt-0">Projects</h3>
+    <p class="text-right"><a href="#hero">Back to search</a></p>
+  </div>
+    <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else load">
+        <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+    </div>
+    <ng-template #load>
+    <div class="container">
+      <h4 class="text-center" *ngIf="noResult else result">Sorry No Matching Result found.</h4>
+      <ng-template #result>
+      <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-12 mb-4" *ngFor="let project of projectSummaryList; let projectIndex = index ">
+              <div class="card" (click)="showProjectDetails(project.area,project.Project_name)">
+                  <p class="card-title">{{project.Project_name}} at {{project.Project_location}}</p>
+                  <div class="media">
+
+                      <span class="summery-img mr-3">
+                        <img [src]="project.main_img !== '' ? 'https://www.zaararealty.in'+project.main_img : 'assets/images/proj-fullview-sample.jpg'" alt="">
+                      </span>
+
+                      <div class="media-body">
+                          <h5 class="mt-0">From {{project.builders_name}}</h5>
+                          <p class="inr-txt">{{project.project_desc}}</p>
+                  </div>
+              </div>
+          </div>
+          <div class="project-footer-section">
+              <ul class="d-flex justify-content-between">
+                  <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/area.svg" alt=""><span>{{project.minbuilduparea}} - {{project.maxbuilduparea}} Sqft</span></li>
+                  <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/bedroom.svg" alt=""><span>{{project.BHK}}</span></li>
+                  <!--<li class="d-flex align-items-center"><img width="20" src="assets/images/svg/bathroom.svg" alt=""><span>3 Bathrooms</span></li>
+                  <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/parking.svg" alt=""><span>1 Coverd Parking</span></li>-->
+              </ul>
+          </div>
+          </div>
+        </div>
+
+
+
+
+      </ng-template>
+    </div>
+  </ng-template>
+</section>
+
+

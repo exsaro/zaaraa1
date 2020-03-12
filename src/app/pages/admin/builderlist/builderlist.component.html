@@ -1,0 +1,165 @@
+<div class="container-fluid">
+
+    <!-- <app-adminsidebar></app-adminsidebar> -->
+    <nav aria-label="breadcrumb ">
+      <ol class="breadcrumb my-5">
+
+        <li class="breadcrumb-item active" aria-current="page">List Builder</li>
+      
+      </ol>
+      <span id ="logout">Welcome Admin || <a routerLink="/admin/login">Logout </a> </span>
+    </nav>
+    <div class="row">
+  <div class="col-md-12">
+    <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
+        <h3>List Builder</h3>
+        <a routerLink="/admin/addbuilder" class="btn btn-info">Add Builder</a>
+    </div>
+    <div class="text-right my-3">
+
+    </div>
+    <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+
+    <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else load">
+      <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+    </div>
+    <ng-template #load>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Area</th>
+            <th scope="col">status</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of builderList; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{list.builders_name}}</td>
+            <td>{{list.builders_location}}</td>
+            <td>{{list.builders_area}}</td>
+            <td>{{list.status}}</td>
+            <td>
+
+              <a class="badge badge-secondary" href="#editBuilderModal" data-toggle="modal" (click)="editBuilder(list.ID)">Edit</a>
+              <a class="badge badge-danger" href="#deleteBuilderModal" data-toggle="modal" (click)="deleteBuilder(list.ID)">Delete</a>
+              <a class="badge badge-primary" href="#" (click)="projectList(list.ID, list.builders_name, $event)">Project List</a>
+            </td>
+          </tr>
+
+
+
+        </tbody>
+      </table>
+    </ng-template>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="deleteBuilderModal" tabindex="-1" role="dialog" aria-labelledby="deleteBuilderModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteBuilderModalLabel">Delete Builder</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure, want to delete this Builder?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal" (click)="deleteBuilderConfirm()">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="editBuilderModal" tabindex="-1" role="dialog" aria-labelledby="editBuilderModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="container d-flex align-items-center justify-content-center" *ngIf="editLoading else editLoad">
+                <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+              </div>
+              <ng-template #editLoad>
+              <div class="modal-header">
+                <h5 class="modal-title" id="editBuilderModalLabel">Edit Builder</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form [formGroup]="editBuilderForm" (submit)="editBuilderConfirm()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" formControlName="builders_name" class="form-control" name="buildname"
+                              placeholder="Builder name">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" formControlName="builders_location" class="form-control" name="buildloc"
+                              placeholder="Builder location">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" formControlName="builders_area" class="form-control" name="buildarea"
+                              placeholder="Builder area">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="number" min="1" formControlName="totalprojects" class="form-control" name="totproj"
+                              placeholder="Total project">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="number" min="1" formControlName="ongoing" class="form-control" name="ongoing"
+                              placeholder="Ongoing">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+
+                            <select ng-modal="status" formControlName="status" class="form-control" name="status">
+                              <option [value]="status1" *ngFor="let status1 of builder_Status">{{status1}}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <!-- (change)="onFileSelect($event)" -->
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="file" (change)="onFileSelect($event)" class="form-control" name="logo" placeholder="Logo">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <textarea formControlName="builders_spec" class="form-control" name="buildspec" cols="30" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-info"
+                  [disabled]="!editBuilderForm.valid">Save changes</button>
+                </div>
+              </form>
+            </ng-template>
+            </div>
+          </div>
+        </div>
+
+  </div>
+</div>
+</div>
+
+

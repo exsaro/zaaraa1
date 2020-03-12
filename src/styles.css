@@ -1,0 +1,396 @@
+/* You can add global styles to this file, and also import other style files */
+ @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+ @import '../node_modules/font-awesome/css/font-awesome.min.css';
+ @import '../node_modules/owl.carousel/dist/assets/owl.carousel.min.css';
+
+ body{
+   font-size: 14px;
+ }
+
+ /* input[type="file"] {
+    display: none;
+} */
+.custom-file-upload {
+    /* border: 1px solid #ccc;
+    display: inline-block;*/
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+ .img_wrp {
+    display: inline-block;
+    list-style-type: none;
+    position: relative;
+    padding-right: 20px;
+  }
+  .close_icon {
+    position: absolute;
+    right: 20px;
+  }
+ /* #navlist li
+ {
+     display: inline;
+
+     padding-right: 20px;
+ }    */
+ body{
+    font-family: 'Roboto', sans-serif;
+    color: #343433;
+}
+h2, h3{
+    font-family: 'Cormorant Upright', serif;
+    font-weight: bold;
+}
+h2{
+    font-size: 36px;
+}
+h3{
+    font-size: 30px;
+}
+.btn{
+    height: 48px;
+    min-width: 197px;
+    font-weight: bold;
+    font-size: 17px;
+}
+.btn-default{
+    background:#ddd;
+}
+.btn-primary{
+    color: #000;
+}
+.btn-primary:hover{
+    background: #ac873c;
+    color: #000;
+}
+.btn-primary:disabled{
+  background: #ac873c;
+    color: #000;
+  opacity: 0.5;
+}
+.btn,.nav a{
+    font-family: 'Cormorant SC', serif;
+}
+
+.hero-section{
+    position: relative;
+    background: #000;
+    height: auto;
+}
+.hero-section img{
+    width: 100%;
+}
+.hero-section .hero-caption{
+  position: absolute;
+  font-size: 48px;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 0 8px rgb(0,0,0,0.5);
+  top: auto;
+  bottom: 21px;
+  z-index: 99;
+  display: inline-block;
+  width: auto;
+  left: 350px;
+
+}
+
+/* .hero-section .hero-caption span{
+    background: rgba(255,255,255,0.7);
+    padding: 0 15px;
+} */
+.hero-section .hero-caption strong{
+    font-weight: 700;
+}
+.hero-caption .loc{
+    font-size: 18px;
+    color: #fff;
+}
+.btn.no-radius{
+    border-radius: 0;
+}
+.btn-primary{
+    background: #cea654;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 17px;
+    border: none;
+}
+.hero-caption .btn-primary{
+  line-height: 35px;
+}
+.welcome-contaoner{
+    background: #fff;
+}
+.welcome-section p{
+    position: relative;
+    padding-left: 45px;
+    line-height: 27px;
+    color: #343433;
+    font-weight: 300;
+}
+.welcome-section p:after{
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #cea654;
+}
+.welcome-img-section img{
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.51)
+}
+.about-container,.clients-container{
+    background: #f8f8f8;
+}
+.about-container p{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 27px;
+    color: #343433;
+    margin-bottom: 0;
+}
+.excellence{
+    background: url('./assets/images/exellence.png') no-repeat;
+}
+.passion{
+    background: url('./assets/images/passion.png') no-repeat;
+}
+.intelligence{
+    background: url('./assets/images/inteligence.png') no-repeat;
+}
+.excellence,.passion,.intelligence{
+    background-size: 50px auto;
+    padding-left: 75px;
+}
+.project-container .card{
+    border-radius: 0;
+    background: #fefbf4;
+    border-color: #f2e8d2;
+    padding: 20px;
+    color: #343433;
+    cursor: pointer;
+}
+.project-container .card-title{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+}
+.project-container .media-body{
+    font-size: 11px;
+    font-weight: normal;
+}
+.project-container .media-body h5{
+    font-size: 14px;
+    font-weight: bold;
+}
+.project-container .media-body .inr-txt{
+    height: 80px;
+    overflow-y: auto;
+}
+.project-footer-section{
+    background: #dfdace;
+    padding: 10px;
+}
+.project-footer-section ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.project-footer-section li{
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+.project-footer-section li span{
+    padding-left: 6px;
+}
+.whychoose-container{
+    background: #f5e5bf;
+    font-weight: bold;
+    font-size: 14px;
+}
+.whychoose-number{
+    font-size: 197px;
+    font-weight: 700;
+    line-height: normal;
+    height: 130px;
+    overflow: hidden;
+    color: #dabd7a;
+}
+.enquiry{
+    background: #363635;
+    color: #fff;
+}
+.enquiry .btn{
+    min-width: unset;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
+.form-control{
+    height: calc(2.25rem + 12px);
+    border: none;
+}
+.address{
+    font-size: 14px;
+    font-weight: normal;
+}
+.address span{
+    color: #b9b9b9;
+}
+.address a{
+    color: #fff;
+}
+
+.hamburger,.closBtn{
+    display: none;
+}
+.clients-container ul{
+    list-style: none;
+    padding-left: 0;
+}
+.owl-carousel li{
+    margin: 0 10px;
+}
+.owl-carousel li img{
+    box-shadow: 0 0 9px rgba(0,0,0,.1);
+}
+.owl-nav{
+    margin-top: 25px;
+}
+.owl-prev{
+    margin-right: 25px;
+}
+.owl-carousel .owl-nav .owl-next.disabled,.owl-carousel .owl-nav .owl-prev.disabled{
+    opacity: 0.3;
+    cursor: no-drop;
+}
+.owl-dots{
+    display: none;
+}
+.overview-container .desc{
+    font-size: 14px;
+    line-height: 26px;
+}
+.table .btn{
+    height: 43px;
+    min-width: 160px;
+}
+
+.hero-container .carousel-indicators li{
+  background: #cea654;
+  height: 5px;
+  border-radius: 50%;
+  width: 25px;
+}
+
+@media only screen and (max-width: 1199px) {
+    .project-footer-section ul{
+        display: block!important;
+    }
+    .project-footer-section li{
+       margin-bottom: 10px;
+    }
+    .project-footer-section li:last-child{
+        margin-bottom: 0;
+    }
+    .whychoose-number{
+        font-size: 185px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .whychoose-number {
+        font-size: 130px;
+        height: 88px;
+    }
+    .project-container .row .col-xl-6:first-child{
+        margin-bottom: 25px;
+    }
+    .hero-section .hero-caption{
+        font-size: 30px;
+    }
+    .hero-section{
+      height: 450px;
+    }
+    .hero-section img{
+      width: auto;
+    }
+}
+@media only screen and (max-width: 767px) {
+  .hero-section{
+    height: auto;
+  }
+    .clients-container ul{
+        display: block!important;
+    }
+    .clients-container li{
+        margin-bottom: 15px;
+    }
+    .clients-container li img{
+        max-width: initial;
+        width: 100%;
+    }
+
+    .welcome-img-section img{
+        display: none;
+    }
+    .about-container .col-md-4,.project-container .media img{
+        margin-bottom: 20px;
+    }
+    .container .media img{
+        width: 100%;
+    }
+    .hero-section,.copyright-container .container{
+        display: block!important;
+    }
+    .hero-section .hero-caption{
+        position: static;
+        color: #343433;
+        text-shadow: none;
+    }
+
+    .hero-section .hero-caption.container .d-block{
+        display: inline!important;
+    }
+    .copyright-container li{
+        margin-right: 15px;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+    .excellence, .passion, .intelligence{
+        background-position: 15px 0;
+    }
+    .hero-container .carousel-indicators{
+        bottom: -40px;
+    }
+    .hero-container .carousel-indicators li{
+        background-color: rgba(0,0,0,.5);
+    }
+    .hero-container .carousel-indicators li.active{
+        background-color: #000;
+    }
+    .project-container .media-body ul{
+        height: auto;
+    }
+    header{
+        justify-content: space-between;
+    }
+    .closBtn button{
+        background: none;
+        border: none;
+    }
+    .mobileClose span{
+        color: #fff;
+        font-size: 52px;
+    }
+    .hero-section .hero-caption span{
+        padding: 0;
+    }
+
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

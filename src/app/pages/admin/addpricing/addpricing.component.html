@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+        <li class="breadcrumb-item"><a routerLink="/admin/builderlist">Builder list</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin/projectlist', BuildId, BuildName]">Project list</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin/pricinglist', ProjId, ProjName]">Pricing list</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Pricing</li>
+    </ol>
+    <span id ="logout">Welcome Admin || <a routerLink="/admin/login">Logout </a> </span>
+  </nav>
+  <div class="row">
+
+    <!-- <div class="col-md-2">
+      <app-adminsidebar></app-adminsidebar>
+    </div> -->
+    <div class="col-md-12">
+      <div class="d-flex align-items-center justify-content-between w-100 border-bottom mb-4">
+        <h3 class="pb-3">Add Pricing for {{ProjName}}</h3>
+        <!-- <a [routerLink]="['/admin/pricinglist',ProjId]">Pricing list</a> -->
+      </div>
+
+      <form [formGroup]="addPricingForm" (ngSubmit)="addPricing()">
+        <div class="card mb-4 p-3">
+            <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" formControlName="type" class="form-control" name="type"
+                  placeholder="Type">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="areasize">Area size</label>
+                <input type="text" formControlName="area_size" class="form-control" name="areasize"
+                  placeholder="Area size">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="sqft">Sqft Price</label>
+                <input type="text" formControlName="sqft_price" class="form-control" name="sqft"
+                  placeholder="Sqft Price">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select formControlName="status" class="form-control" name="status" #status>
+                  <option value="active">Active</option>
+                  <option value="inactive">In active</option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-right"><button type="submit" class="btn btn-primary" [disabled]="!addPricingForm.valid">Submit</button></p>
+      </form>
+    </div>
+  </div>
+</div>

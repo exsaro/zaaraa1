@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+        <li class="breadcrumb-item"><a routerLink="/admin/builderlist">Builder list</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin/projectlist', BuildId, BuildName]">Project list</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Amenities</li>
+    </ol>
+    <span id ="logout">Welcome Admin || <a routerLink="/admin/login">Logout </a> </span>
+  </nav>
+  <div class="row">
+    <!-- <div class="col-md-2">
+      <app-adminsidebar></app-adminsidebar>
+    </div> -->
+    <div class="col-md-12">
+      <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
+        <h3>List of Amenities for {{ProjName}}</h3>
+        <!-- <a href="#" (click)="addAmenitiesPage(ProjId, ProjName, $event)" class="btn btn-info">Add Amenities</a> -->
+      </div>
+      <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
+      <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else load">
+          <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+      </div>
+      <ng-template #load>
+          <!-- <table class="table table-hover" *ngIf="amenities.length > 0; else noProjects">
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+            <tr *ngFor="let amenList of amenities; let i = index">
+              <td>{{amenList.amenities_name}}</td>
+              <td>{{amenList.status}}</td>
+              <td><a class="badge badge-danger" href="#deleteAmenModal" data-toggle="modal" (click)="deleteAmenities(amenList.ID)">Delete</a></td>
+            </tr>
+          </table> -->
+
+            <mat-chip-list #chipList aria-label="Fruit selection" *ngIf="amenities.length > 0; else noProjects">
+              <mat-chip color="primary" selected *ngFor="let amenList of amenities" [selectable]="selectable"
+                       [removable]="removable" (removed)="deleteAmenitiesConfirm(amenList.ID)">
+                {{amenList.amenities_name}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+
+            <div class="card w-50 mt-5 mx-auto">
+              <div class="card-body">
+                <form [formGroup]="addAmenitiesForm" (ngSubmit)="addAmenities()" class="form-inline">
+                    <div class="form-group col-md-8">
+                    <input type="text" formControlName="amenities_name" class="form-control w-100" name="amenname"
+                    placeholder="Add Amenities">
+                    </div>
+                    <div class="form-group col-md-4">
+                    <button type="submit" class="btn btn-primary" [disabled]="!addAmenitiesForm.valid">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          <ng-template #noProjects>No Data Found</ng-template>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteAmenModal" tabindex="-1" role="dialog" aria-labelledby="deleteAmenModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteAmenModalLabel">Delete Amenities</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure, want to delete this Amenities?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
