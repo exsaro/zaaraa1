@@ -146,13 +146,15 @@ getclients(){
 
 
   ngOnInit() {
-    this.leadForm = this.fb.group({
-      Last_Name: ['', [Validators.required]],
-      Email: ['', [Validators.required, Validators.email]],
-      Mobile: ['', [Validators.required, Validators.pattern(/^(\+)?\d+$/)]],
-      recaptchaReactive: ['', [Validators.required]],
-      Referrer: [`${window.location.href}`]
-    });
+    // this.leadForm = this.fb.group({
+    //   Last_Name: ['', [Validators.required]],
+    //   Email: ['', [Validators.required, Validators.email]],
+    //   Mobile: ['', [Validators.required, Validators.pattern(/^(\+)?\d+$/)]],
+    //   Message: ['', [Validators.required]],
+    //   recaptchaReactive: ['', [Validators.required]],
+    //   Referrer: [`${window.location.href}?=refer_site=${this.referSite}`]
+    // });
+    this.leadFormObj();
     this.getclients();
     $('.owl-carousel').owlCarousel({
       items: 5,
