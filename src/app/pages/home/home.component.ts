@@ -54,6 +54,7 @@ leads(form){
     setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
   });
   form.reset();
+  form.close();
 }
   public displaySuggest(query: string) {
       this.loading = true;
