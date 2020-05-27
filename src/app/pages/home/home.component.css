@@ -78,6 +78,27 @@ padding: 20px 0;
   border: solid 1px #ccc;
 }
 
+.sri-sai .btn-primary{
+  background: #4dbdce;
+  color: #fff;
+}
+.crystal .btn-primary{
+  background: #fff;
+  color: #d77922;
+}
+.citrus .btn-primary{
+  background: #f78022;
+  color: #fff;
+}
+.altamira .btn-primary{
+  background: #43b38b;
+  color: #fff;
+}
+.santorini .btn-primary{
+  background: #e72e89;
+  color: #fff;
+}
+
 @media only screen and (max-width: 1199px) {
   .search-container{
     margin-left: -480px;
