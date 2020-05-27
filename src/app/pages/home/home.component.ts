@@ -15,9 +15,11 @@ declare let $: any;
 
 export class HomeComponent implements OnInit {
   @ViewChild("refersite") inputvalue;
+  @ViewChild("btnclose") btnclose : ElementRef;
   referSite = '';
   private recaptchaSiteKey = '6Lfki38UAAAAADienDrSAirDZ7LdEWmU3SnDtTdc';
   leadForm: FormGroup;
+  leadFormnew: FormGroup;
   public searchResults: string[] = [];
   public searchAllResults: Projects.SearchModel;
   public searchRequestParams;
@@ -37,7 +39,8 @@ export class HomeComponent implements OnInit {
   resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
 }
-leads(form){
+leads_form(form){
+  
   let leadData = JSON.stringify(form.value);
   console.log(form.value);
   this.progressFlag = true;
@@ -50,11 +53,37 @@ leads(form){
       this.succMsg = 'Your details added successfully, Our Representative will get back to you soon.';
     }else if(res.code === 'Failed'){
       this.succMsg = 'Something went wrong, please try after some time.';
+    }else{
+      this.succMsg = res;
+    }
+    setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
+    form.reset();
+    this.btnclose.nativeElement.click();
+  });
+  
+ 
+}
+leads(form){
+
+  let leadData = JSON.stringify(form.value);
+  console.log(form.value);
+  this.progressFlag = true;
+  this.projectDetailsService.postProjectLeads(leadData).subscribe( (res)=>{
+    console.log(res.code);
+    this.succMsgFlag = true;
+    this.progressFlag = false;
+
+    if(res.code === 'Success'){
+      this.succMsg = 'Your details added successfully, Our Representative will get back to you soon.';
+    }else if(res.code === 'Failed'){
+      this.succMsg = 'Something went wrong, please try after some time.';
+    }else{
+      this.succMsg = res;
     }
     setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
   });
   form.reset();
-  form.close();
+  //form.close();
 }
   public displaySuggest(query: string) {
       this.loading = true;
@@ -189,6 +218,15 @@ getclients(){
       recaptchaReactive: ['', [Validators.required]],
       Referrer: [`${window.location.href}?=refer_site=${this.referSite}`]
     });
+    this.leadFormnew = this.fb.group({
+      Last_Name: ['', [Validators.required]],
+      Email: ['', [Validators.required, Validators.email]],
+      Mobile: ['', [Validators.required, Validators.pattern(/^(\+)?\d+$/)]],
+      Message: ['', [Validators.required]],
+      recaptchaReactive: ['', [Validators.required]],
+      Referrer: [`${window.location.href}?=refer_site=${this.referSite}`]
+    });
+
   }
 
   getRef(value){

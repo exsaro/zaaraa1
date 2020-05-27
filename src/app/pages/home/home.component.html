@@ -321,7 +321,7 @@
 
 
                 <div class="address text-center">
-                    <p><span>Call us: </span>+91 7067 7067 22</p>
+                    <p><span>Call us: </span>+91 7824 0099 55</p>
                     <p><span>Email us: </span><a href="mailto:lakshmi@zaararealty.in">lakshmi@zaararealty.in</a></p>
                     <p class="pb-4"><span>Address:</span> F1, No: 78, Gulmohar Avenue, Velachery main road, Guindy, Chennai - 600 032.</p>
                 </div>
@@ -335,11 +335,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Enquiry for {{referSite}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button #btnclose type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form  [formGroup]="leadForm" (submit)="leads(leadForm)">
+      <form  [formGroup]="leadFormnew" (submit)="leads_form(leadFormnew)">
       <div class="modal-body">
         <div class="col-md-12">
 
@@ -386,7 +386,7 @@
           </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" [disabled]="!leadForm.valid">
+        <button type="submit" class="btn btn-primary" [disabled]="!leadFormnew.valid">
           <span *ngIf="!progressFlag">Get Call Back</span>
           <span *ngIf="!!progressFlag" class="loader-submit"></span>
         </button>
