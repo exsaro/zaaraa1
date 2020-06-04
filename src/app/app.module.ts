@@ -16,10 +16,6 @@ import { AddgalleryComponent } from './pages/admin/addgallery/addgallery.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecaptchaModule } from 'ng-recaptcha';
 
-
-
-
-
 const routes: Routes = [{
   path : '',
   component: HomeComponent
@@ -31,7 +27,7 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent
   ],
   imports: [
@@ -45,6 +41,7 @@ const routes: Routes = [{
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     RecaptchaModule
+    
 
   ],
   exports: [

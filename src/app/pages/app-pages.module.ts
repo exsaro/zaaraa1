@@ -118,10 +118,11 @@ const routes:Routes = [
          MatIconModule,
          RecaptchaFormsModule,
          AgmCoreModule.forRoot({
-          apiKey: 'AIzaSyBlVqyB--wrkGpks1i74mHuZLpGu1pwVq8'
+          apiKey: 'AIzaSyBlVqyB--wrkGpks1i74mHuZLpGu1pwVq8',
+          libraries: ['places'] 
         }),
         // ProjectSummaryComponent
-       RouterModule.forChild(routes)
+       RouterModule.forChild(routes) 
     ],
     exports: [
 
